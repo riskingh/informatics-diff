@@ -3,12 +3,11 @@ import logging
 import importlib.util
 from dataclasses import dataclass, fields
 
-log = logging.getLogger()
-
 
 @dataclass
 class Config:
     password: str = 'secret'
+    logging_level: int = logging.DEBUG
 
 
 config_path = os.environ.get('CONFIG_PATH')
@@ -25,5 +24,4 @@ if config_path:
         kwargs[field.name] = value
     config = Config(**kwargs)
 else:
-    log.warning('CONFIG_PATH not set. Using default config!')
     config = Config()

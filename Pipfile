@@ -9,6 +9,7 @@ name = "pypi"
 [packages]
 aiohttp = "*"
 "beautifulsoup4" = "*"
+cachetools = "*"
 
 [requires]
 python_version = "3.7"
