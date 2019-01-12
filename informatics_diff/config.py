@@ -12,6 +12,12 @@ class Config:
     informatics_password: str = 'test'
     informatics_cookie_ttl: int = 600
 
+    watch_statement_id: int = 19635
+    watch_group_id: int = 9901
+    watch_sleep: int = 10
+    watch_max_snapshots: int = 10
+    storage_key: str = 'standings'
+
 
 config_path = os.environ.get('CONFIG_PATH')
 if config_path:
