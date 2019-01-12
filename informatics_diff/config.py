@@ -6,8 +6,11 @@ from dataclasses import dataclass, fields
 
 @dataclass
 class Config:
-    password: str = 'secret'
     logging_level: int = logging.DEBUG
+    informatics_proxy_url = 'http://localhost:8089'
+    informatics_username: str = 'test'
+    informatics_password: str = 'test'
+    informatics_cookie_ttl: int = 600
 
 
 config_path = os.environ.get('CONFIG_PATH')

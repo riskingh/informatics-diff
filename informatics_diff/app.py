@@ -1,8 +1,10 @@
+import asyncio
 from aiohttp import web
 
 from informatics_diff.handlers import ping_handler
 from informatics_diff.storage import Storage
 from informatics_diff.log import configure_logging
+from informatics_diff.tasks import StandingLoader
 
 
 class InformaticsDiffApplication(web.Application):
@@ -23,10 +25,10 @@ class InformaticsDiffApplication(web.Application):
         ])
 
     async def start_background_tasks(self, app):
-        pass
+        app['standings_loader'] = asyncio.create_task(StandingLoader().run())
 
     async def cleanup_background_tasks(self, app):
-        pass
+        await app['standings_loader'].cancel()
 
 
 if __name__ == '__main__':
